@@ -12,7 +12,7 @@ struct MainTabBarView: View {
     @StateObject var carManager = CarManager()
     var body: some View {
         TabView {
-            HomeView()
+            HomeView(carManager: carManager)
                 .tabItem {
                     VStack {
                         Image(systemName: "house")

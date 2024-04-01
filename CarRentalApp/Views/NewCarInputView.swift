@@ -17,7 +17,9 @@ struct NewCarInputView: View {
     @State private var rentalPrice: String
     @State private var startDate: Date
     @State private var endDate: Date
-    @State private var showAlert = false
+    @State private var showSuccessAlert = false
+    @State private var showInvalidPriceAlert = false
+    @State private var showEmptyCarNameAlert = false
     
     // Initialization
     init(carManager: CarManager, carToEdit: Car?, onAddCar: @escaping () -> Void) {
@@ -37,7 +39,7 @@ struct NewCarInputView: View {
         Form {
             Section(header: Text("Car Details")) {
                 TextField("Car Name", text: $carName)
-                TextField("Rental Price Per Day", text: $rentalPrice)
+                TextField("Rental Price", text: $rentalPrice)
                     .keyboardType(.numberPad)
             }
             
@@ -52,8 +54,14 @@ struct NewCarInputView: View {
             }
         }
         .navigationTitle(carToEdit != nil ? "Edit Car" : "Add New Car")
-        .alert(isPresented: $showAlert) {
+        .alert(isPresented: $showSuccessAlert) {
             Alert(title: Text(carToEdit != nil ? "Car Updated" : "Car Added"), message: Text("The car details have been \(carToEdit != nil ? "updated" : "added") to the list."), dismissButton: .default(Text("OK")))
+        }
+        .alert(isPresented: $showInvalidPriceAlert) {
+            Alert(title: Text("Error"), message: Text("Inputted Rental Price is invalid."), dismissButton: .default(Text("OK")))
+        }
+        .alert(isPresented: $showEmptyCarNameAlert) {
+            Alert(title: Text("Error"), message: Text("Please enter a car name."), dismissButton: .default(Text("OK")))
         }
     }
     
@@ -61,12 +69,14 @@ struct NewCarInputView: View {
         guard let price = Double(rentalPrice) else {
             // Show an alert indicating that rental price is invalid
             print("Error: Rental price is invalid.")
+            showInvalidPriceAlert = true
             return
         }
         
         if carName.isEmpty {
             // Show an alert indicating that car name is required
             print("Error: Car Name is required.")
+            showEmptyCarNameAlert = true
             return
         }
         
@@ -85,7 +95,7 @@ struct NewCarInputView: View {
         carManager.saveCars()
         
         // Show the alert
-        showAlert = true
+        showSuccessAlert = true
         
         // Call the closure to notify that a new car is added or an existing one is edited
         onAddCar()

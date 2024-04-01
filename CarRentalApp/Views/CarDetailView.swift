@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CarDetailView: View {
-    @ObservedObject var carManager: CarManager // Use @ObservedObject to observe changes
+    @ObservedObject var carManager: CarManager
     @State var car: Car
     @State private var isEditing = false
     
@@ -16,7 +16,7 @@ struct CarDetailView: View {
         VStack {
             Text("Car Name: \(car.name)")
             // Display other car details
-            Text("Price per day: $\(formattedPrice)")
+            Text("Total Price: $\(formattedPrice)")
             Text("Dates Rented: \(formattedStartDate) - \(formattedEndDate)")
         }
         .navigationTitle(car.name)
@@ -38,6 +38,7 @@ struct CarDetailView: View {
                 car = updatedCar
             }
         }
+        .onAppear { print("---> start: \(car.startDate) end: \(car.endDate)") }
     }
     
     private var formattedStartDate: String {
