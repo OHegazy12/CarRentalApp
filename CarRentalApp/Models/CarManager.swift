@@ -6,6 +6,14 @@
 //
 
 import Foundation
+import Combine
+import SwiftUI
+
+enum CarType: String, CaseIterable, Codable {
+    case electric
+    case hybrid
+    case gas
+}
 
 struct Car: Identifiable, Encodable, Decodable {
     let id = UUID()
@@ -13,9 +21,16 @@ struct Car: Identifiable, Encodable, Decodable {
     var startDate: Date
     var endDate: Date
     var revenue: Double
+    var carType: CarType
+    
+    var rentedDays: Int {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day], from: startDate, to: endDate)
+        return components.day ?? 0
+    }
     
     enum CodingKeys: String, CodingKey {
-        case id, name, startDate, endDate, revenue
+        case id, name, startDate, endDate, revenue, carType
     }
     
     func encode(to encoder: Encoder) throws {
@@ -25,6 +40,7 @@ struct Car: Identifiable, Encodable, Decodable {
         try container.encode(startDate, forKey: .startDate)
         try container.encode(endDate, forKey: .endDate)
         try container.encode(revenue, forKey: .revenue)
+        try container.encode(carType.rawValue, forKey: .carType)
     }
 }
 
@@ -36,8 +52,18 @@ class CarManager: ObservableObject {
         }
     }
     
+    @Published var totalRentedDays: Int = 0
+    private var cancellables = Set<AnyCancellable>()
+    
+    
     init() {
         loadCars()
+        
+        $cars
+            .sink { [weak self] cars in
+                self?.totalRentedDays = cars.reduce(0) { $0 + $1.rentedDays }
+            }
+            .store(in: &cancellables)
     }
     
     // Add, Edit, Delete functions for cars

@@ -6,26 +6,27 @@
 //
 
 import SwiftUI
+import Charts
 
 struct HomeView: View {
     @ObservedObject var carManager: CarManager
     
-    @State private var selectedStartDate = Date()
-    @State private var selectedEndDate = Date()
-    
     var body: some View {
         ScrollView {
             VStack {
+                Text("Overview")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                
                 EarningsOverview(earnings: calculateEarnings())
                     .padding()
-                MonthlyOverview(bookings: calculateBookings())
+                CarsOverview(carsRented: calculateNumberOfCarsRented())
                     .padding()
-                AvailabilityOverview(availableDays: calculateAvailableDays())
+                AvailabilityOverview(daysTaken: carManager.totalRentedDays)
                     .padding()
             }
-            
         }
-        .navigationBarTitle("Home")
+        .navigationTitle("Home")
     }
     
     // Calculate total earnings
@@ -33,17 +34,14 @@ struct HomeView: View {
         return carManager.cars.reduce(0) { $0 + $1.revenue }
     }
     
-    // Calculate monthly bookings
-    private func calculateBookings() -> Int {
-        // Implement logic to calculate monthly bookings
-        // You can use Date components to filter cars based on the month
-        return 0
+    // Calculate total number of days booked
+    private func calculateDaysRented() -> Int {
+        return carManager.totalRentedDays
     }
     
-    // Calculate available days
-    private func calculateAvailableDays() -> Int {
-        // Implement logic to calculate available days
-        return 0
+    // Calculate total number of cars rented
+    private func calculateNumberOfCarsRented() -> Int {
+        return carManager.cars.count
     }
 }
 
@@ -64,20 +62,20 @@ struct EarningsOverview: View {
     }
 }
 
-struct MonthlyOverview: View {
-    let bookings: Int
+struct AvailabilityOverview: View {
+    let daysTaken: Int
     
     var body: some View {
-        Text("Monthly Bookings: \(bookings)")
+        Text("Total Days Booked: \(daysTaken)")
             .font(.title)
     }
 }
 
-struct AvailabilityOverview: View {
-    let availableDays: Int
+struct CarsOverview: View {
+    let carsRented: Int
     
     var body: some View {
-        Text("Available Days: \(availableDays)")
+        Text("Number of Cars Rented: \(carsRented)")
             .font(.title)
     }
 }

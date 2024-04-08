@@ -16,6 +16,7 @@ struct CarDetailView: View {
         VStack {
             Text("Car Name: \(car.name)")
             // Display other car details
+            Text("Car Type: \(car.carType.rawValue.capitalized)")
             Text("Total Price: $\(formattedPrice)")
             Text("Dates Rented: \(formattedStartDate) - \(formattedEndDate)")
         }

@@ -17,6 +17,7 @@ struct NewCarInputView: View {
     @State private var rentalPrice: String
     @State private var startDate: Date
     @State private var endDate: Date
+    @State private var selectedCarType: CarType = .electric
     @State private var showSuccessAlert = false
     @State private var showInvalidPriceAlert = false
     @State private var showEmptyCarNameAlert = false
@@ -41,6 +42,12 @@ struct NewCarInputView: View {
                 TextField("Car Name", text: $carName)
                 TextField("Rental Price", text: $rentalPrice)
                     .keyboardType(.numberPad)
+                
+                Picker("Car Type", selection: $selectedCarType) {
+                    ForEach(CarType.allCases, id: \.self) { type in
+                        Text(type.rawValue.capitalized)
+                    }
+                }
             }
             
             Section(header: Text("Select Rental Dates")) {
@@ -86,8 +93,9 @@ struct NewCarInputView: View {
             carManager.cars[index].startDate = startDate
             carManager.cars[index].endDate = endDate
             carManager.cars[index].revenue = price
+            carManager.cars[index].carType = selectedCarType
         } else {
-            let newCar = Car(name: carName, startDate: startDate, endDate: endDate, revenue: price)
+            let newCar = Car(name: carName, startDate: startDate, endDate: endDate, revenue: price, carType: selectedCarType)
             carManager.cars.append(newCar)
         }
         

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		182EF0E62BBF614000F8F1AC /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 182EF0E52BBF614000F8F1AC /* SwiftUICharts */; };
 		184EC66A2BB6826000D2CB2C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184EC6692BB6826000D2CB2C /* HomeView.swift */; };
 		184EC66D2BB7472900D2CB2C /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = 184EC66C2BB7472900D2CB2C /* SwipeCellKit */; };
 		18E883F72BB4A96300BDC6EC /* CarRentalAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E883F62BB4A96300BDC6EC /* CarRentalAppApp.swift */; };
@@ -40,6 +41,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				184EC66D2BB7472900D2CB2C /* SwipeCellKit in Frameworks */,
+				182EF0E62BBF614000F8F1AC /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +139,7 @@
 			name = CarRentalApp;
 			packageProductDependencies = (
 				184EC66C2BB7472900D2CB2C /* SwipeCellKit */,
+				182EF0E52BBF614000F8F1AC /* SwiftUICharts */,
 			);
 			productName = CarRentalApp;
 			productReference = 18E883F32BB4A96300BDC6EC /* CarRentalApp.app */;
@@ -168,6 +171,7 @@
 			mainGroup = 18E883EA2BB4A96300BDC6EC;
 			packageReferences = (
 				184EC66B2BB7472900D2CB2C /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
+				182EF0E42BBF614000F8F1AC /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = 18E883F42BB4A96300BDC6EC /* Products */;
 			projectDirPath = "";
@@ -410,6 +414,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		182EF0E42BBF614000F8F1AC /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.5;
+			};
+		};
 		184EC66B2BB7472900D2CB2C /* XCRemoteSwiftPackageReference "SwipeCellKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwipeCellKit/SwipeCellKit";
@@ -421,6 +433,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		182EF0E52BBF614000F8F1AC /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 182EF0E42BBF614000F8F1AC /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
 		184EC66C2BB7472900D2CB2C /* SwipeCellKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 184EC66B2BB7472900D2CB2C /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
