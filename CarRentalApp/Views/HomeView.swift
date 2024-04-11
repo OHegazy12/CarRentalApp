@@ -18,7 +18,7 @@ struct HomeView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                 
-                EarningsOverview(earnings: calculateEarnings())
+                EarningsOverview(carManager: carManager)
                     .padding()
                 CarsOverview(carsRented: calculateNumberOfCarsRented())
                     .padding()
@@ -31,7 +31,7 @@ struct HomeView: View {
     
     // Calculate total earnings
     private func calculateEarnings() -> Double {
-        return carManager.cars.reduce(0) { $0 + $1.revenue }
+        return carManager.cars.reduce(0) { $0 + $1.pricePerDay }
     }
     
     // Calculate total number of days booked
@@ -46,19 +46,21 @@ struct HomeView: View {
 }
 
 struct EarningsOverview: View {
-    let earnings: Double
+    @ObservedObject var carManager: CarManager
     
     var body: some View {
-        let formattedEarnings = formatCurrency(earnings)
         
-        return Text("Total Earnings: \(formattedEarnings)")
+        Text("Total Price: $\(formattedTotalRevenue)")
             .font(.title)
     }
     
-    private func formatCurrency(_ amount: Double) -> String {
+    private var formattedTotalRevenue: String {
+        let totalRevenue = carManager.cars.reduce(0) { $0 + $1.revenue }
         let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        return formatter.string(from: NSNumber(value: amount)) ?? "$0.00"
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        return formatter.string(for: totalRevenue) ?? "\(totalRevenue)"
     }
 }
 

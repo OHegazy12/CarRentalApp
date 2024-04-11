@@ -29,7 +29,7 @@ struct NewCarInputView: View {
         
         // Set initial values based on existing car details for editing, or default values for new entry
         _carName = State(initialValue: carToEdit?.name ?? "")
-        _rentalPrice = State(initialValue: "\(carToEdit?.revenue ?? 0)")
+        _rentalPrice = State(initialValue: "\(carToEdit?.pricePerDay ?? 0)")
         _startDate = State(initialValue: carToEdit?.startDate ?? Date())
         _endDate = State(initialValue: carToEdit?.endDate ?? Date())
         
@@ -73,9 +73,9 @@ struct NewCarInputView: View {
     }
     
     func saveCar() {
-        guard let price = Double(rentalPrice) else {
+        guard let pricePerDay = Double(rentalPrice), pricePerDay > 0 else {
             // Show an alert indicating that rental price is invalid
-            print("Error: Rental price is invalid.")
+            print("Error: Rental price per day is invalid.")
             showInvalidPriceAlert = true
             return
         }
@@ -92,10 +92,10 @@ struct NewCarInputView: View {
             carManager.cars[index].name = carName
             carManager.cars[index].startDate = startDate
             carManager.cars[index].endDate = endDate
-            carManager.cars[index].revenue = price
+            carManager.cars[index].pricePerDay = pricePerDay // Update price per day
             carManager.cars[index].carType = selectedCarType
         } else {
-            let newCar = Car(name: carName, startDate: startDate, endDate: endDate, revenue: price, carType: selectedCarType)
+            let newCar = Car(name: carName, startDate: startDate, endDate: endDate, pricePerDay: pricePerDay, carType: selectedCarType)
             carManager.cars.append(newCar)
         }
         
@@ -111,4 +111,5 @@ struct NewCarInputView: View {
         // Dismiss the view
         presentationMode.wrappedValue.dismiss()
     }
+
 }

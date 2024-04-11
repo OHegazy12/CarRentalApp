@@ -16,11 +16,11 @@ struct CalendarView: View {
             Text("Select Dates")
             
             DatePicker("Start Date", selection: $startDate, in: ...endDate, displayedComponents: .date)
-                .datePickerStyle(.graphical)
+                .datePickerStyle(.wheel)
                 .padding()
             
             DatePicker("End Date", selection: $endDate, in: startDate..., displayedComponents: .date)
-                .datePickerStyle(.graphical)
+                .datePickerStyle(.wheel)
                 .padding()
         }
     }

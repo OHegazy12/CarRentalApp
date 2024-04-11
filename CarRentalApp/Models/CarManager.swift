@@ -20,7 +20,7 @@ struct Car: Identifiable, Encodable, Decodable {
     var name: String
     var startDate: Date
     var endDate: Date
-    var revenue: Double
+    var pricePerDay: Double
     var carType: CarType
     
     var rentedDays: Int {
@@ -29,8 +29,12 @@ struct Car: Identifiable, Encodable, Decodable {
         return components.day ?? 0
     }
     
+    var revenue: Double {
+        return pricePerDay * Double(rentedDays)
+    }
+    
     enum CodingKeys: String, CodingKey {
-        case id, name, startDate, endDate, revenue, carType
+        case id, name, startDate, endDate, pricePerDay, carType
     }
     
     func encode(to encoder: Encoder) throws {
@@ -39,7 +43,7 @@ struct Car: Identifiable, Encodable, Decodable {
         try container.encode(name, forKey: .name)
         try container.encode(startDate, forKey: .startDate)
         try container.encode(endDate, forKey: .endDate)
-        try container.encode(revenue, forKey: .revenue)
+        try container.encode(pricePerDay, forKey: .pricePerDay)
         try container.encode(carType.rawValue, forKey: .carType)
     }
 }

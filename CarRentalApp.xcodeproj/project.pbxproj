@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		182EF0E62BBF614000F8F1AC /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 182EF0E52BBF614000F8F1AC /* SwiftUICharts */; };
+		180362132BC5F4ED0013DCDF /* MoneyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180362122BC5F4ED0013DCDF /* MoneyInfoView.swift */; };
 		184EC66A2BB6826000D2CB2C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184EC6692BB6826000D2CB2C /* HomeView.swift */; };
-		184EC66D2BB7472900D2CB2C /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = 184EC66C2BB7472900D2CB2C /* SwipeCellKit */; };
 		18E883F72BB4A96300BDC6EC /* CarRentalAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E883F62BB4A96300BDC6EC /* CarRentalAppApp.swift */; };
 		18E883FB2BB4A96600BDC6EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18E883FA2BB4A96600BDC6EC /* Assets.xcassets */; };
 		18E883FE2BB4A96600BDC6EC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18E883FD2BB4A96600BDC6EC /* Preview Assets.xcassets */; };
@@ -22,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		180362122BC5F4ED0013DCDF /* MoneyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyInfoView.swift; sourceTree = "<group>"; };
 		184EC6692BB6826000D2CB2C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		18E883F32BB4A96300BDC6EC /* CarRentalApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarRentalApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18E883F62BB4A96300BDC6EC /* CarRentalAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarRentalAppApp.swift; sourceTree = "<group>"; };
@@ -40,8 +40,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				184EC66D2BB7472900D2CB2C /* SwipeCellKit in Frameworks */,
-				182EF0E62BBF614000F8F1AC /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +99,7 @@
 				18E8840F2BB4ABE000BDC6EC /* NewCarInputView.swift */,
 				18E884112BB4ABED00BDC6EC /* CalendarView.swift */,
 				184EC6692BB6826000D2CB2C /* HomeView.swift */,
+				180362122BC5F4ED0013DCDF /* MoneyInfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -138,8 +137,6 @@
 			);
 			name = CarRentalApp;
 			packageProductDependencies = (
-				184EC66C2BB7472900D2CB2C /* SwipeCellKit */,
-				182EF0E52BBF614000F8F1AC /* SwiftUICharts */,
 			);
 			productName = CarRentalApp;
 			productReference = 18E883F32BB4A96300BDC6EC /* CarRentalApp.app */;
@@ -170,8 +167,6 @@
 			);
 			mainGroup = 18E883EA2BB4A96300BDC6EC;
 			packageReferences = (
-				184EC66B2BB7472900D2CB2C /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
-				182EF0E42BBF614000F8F1AC /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = 18E883F42BB4A96300BDC6EC /* Products */;
 			projectDirPath = "";
@@ -206,6 +201,7 @@
 				18E8840A2BB4AB4200BDC6EC /* CarManager.swift in Sources */,
 				184EC66A2BB6826000D2CB2C /* HomeView.swift in Sources */,
 				18E8840E2BB4AB9B00BDC6EC /* CarDetailView.swift in Sources */,
+				180362132BC5F4ED0013DCDF /* MoneyInfoView.swift in Sources */,
 				18E883F72BB4A96300BDC6EC /* CarRentalAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,38 +408,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		182EF0E42BBF614000F8F1AC /* XCRemoteSwiftPackageReference "ChartView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppPear/ChartView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.5.5;
-			};
-		};
-		184EC66B2BB7472900D2CB2C /* XCRemoteSwiftPackageReference "SwipeCellKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwipeCellKit/SwipeCellKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.7.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		182EF0E52BBF614000F8F1AC /* SwiftUICharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 182EF0E42BBF614000F8F1AC /* XCRemoteSwiftPackageReference "ChartView" */;
-			productName = SwiftUICharts;
-		};
-		184EC66C2BB7472900D2CB2C /* SwipeCellKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 184EC66B2BB7472900D2CB2C /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
-			productName = SwipeCellKit;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 18E883EB2BB4A96300BDC6EC /* Project object */;
 }

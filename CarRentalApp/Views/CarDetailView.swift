@@ -17,7 +17,7 @@ struct CarDetailView: View {
             Text("Car Name: \(car.name)")
             // Display other car details
             Text("Car Type: \(car.carType.rawValue.capitalized)")
-            Text("Total Price: $\(formattedPrice)")
+            Text("Price Per Day: $\(formattedPrice)")
             Text("Dates Rented: \(formattedStartDate) - \(formattedEndDate)")
         }
         .navigationTitle(car.name)
@@ -57,9 +57,8 @@ struct CarDetailView: View {
     private var formattedPrice: String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
-        formatter.minimumFractionDigits = 0
-        formatter.maximumFractionDigits = 8
-        return formatter.string(for: car.revenue) ?? "\(car.revenue)"
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        return formatter.string(for: car.pricePerDay) ?? "\(car.pricePerDay)"
     }
 }
-

@@ -23,16 +23,25 @@ struct MainTabBarView: View {
                 .onAppear {
                     selectedTab = 0
                 }
+//            MoneyInfoView()
+            PieView(carManager: carManager, carType: CarType.electric, car: nil)
+                .tabItem {
+                    VStack {
+                        Image(systemName: "dollarsign.circle")
+                            .environment(\.symbolVariants, selectedTab == 1 ? .fill : .none)
+                        Text("Money Info")
+                    }
+                }
            CarListView(carManager: carManager)
                 .tabItem {
                     VStack {
                         Image(systemName: "list.bullet.clipboard")
-                            .environment(\.symbolVariants, selectedTab == 1 ? .fill : .none)
+                            .environment(\.symbolVariants, selectedTab == 2 ? .fill : .none)
                         Text("List")
                     }
                 }
                 .onAppear {
-                    selectedTab = 1
+                    selectedTab = 2
                 }
         }
     }
