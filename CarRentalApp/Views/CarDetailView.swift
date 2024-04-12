@@ -11,9 +11,17 @@ struct CarDetailView: View {
     @ObservedObject var carManager: CarManager
     @State var car: Car
     @State private var isEditing = false
+    @State private var carImage: UIImage?
     
     var body: some View {
         VStack {
+            if let carImage = carImage {
+                Image(uiImage: carImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: .infinity)
+            }
+            
             Text("Car Name: \(car.name)")
             // Display other car details
             Text("Car Type: \(car.carType.rawValue.capitalized)")
@@ -37,9 +45,18 @@ struct CarDetailView: View {
             // Update the car when changes are detected in the car manager
             if let updatedCar = carManager.cars.first(where: { $0.id == car.id }) {
                 car = updatedCar
+                loadCarImage()
             }
         }
-        .onAppear { print("---> start: \(car.startDate) end: \(car.endDate)") }
+        .onAppear {
+            print("---> start: \(car.startDate) end: \(car.endDate)")
+            loadCarImage()
+        }
+    }
+    
+    private func loadCarImage() {
+        guard let imageData = car.imageData else { return }
+        carImage = UIImage(data: imageData)
     }
     
     private var formattedStartDate: String {

@@ -45,8 +45,21 @@ struct PieView: View {
             CarActivityView(carType: car.carType, pricePerDay: car.pricePerDay)
         }
         VStack {
+            
+            Text("Money Breakdown")
+                .font(.title)
+                .fontWeight(.heavy)
+            
             Canvas { context, size in
                 let total = data.reduce(0) {$0 + $1.pricePerDay}
+                
+                if(displayDonutChart) {
+                    let donut = Path{ p in
+                        p.addEllipse(in: CGRect(origin: .zero, size: size))
+                        p.addEllipse(in: CGRect(x: size.width * 0.25, y: size.height * 0.25, width: size.width * 0.5, height: size.height * 0.5))
+                    }
+                    context.clip(to: donut, style: .init(eoFill: true))
+                }
                 
                 context.translateBy(x: size.width*0.5, y: size.height*0.5)
                 var picontext = context
@@ -78,6 +91,8 @@ struct PieView: View {
                     }
                 }
             }
+            Toggle("Display Donut Chart?", isOn: $displayDonutChart)
+                .padding()
         }
     }
 }

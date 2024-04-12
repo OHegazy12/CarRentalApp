@@ -22,6 +22,7 @@ struct Car: Identifiable, Encodable, Decodable {
     var endDate: Date
     var pricePerDay: Double
     var carType: CarType
+    var imageData: Data?
     
     var rentedDays: Int {
         let calendar = Calendar.current
@@ -34,7 +35,7 @@ struct Car: Identifiable, Encodable, Decodable {
     }
     
     enum CodingKeys: String, CodingKey {
-        case id, name, startDate, endDate, pricePerDay, carType
+        case id, name, startDate, endDate, pricePerDay, carType, imageData
     }
     
     func encode(to encoder: Encoder) throws {
@@ -45,9 +46,18 @@ struct Car: Identifiable, Encodable, Decodable {
         try container.encode(endDate, forKey: .endDate)
         try container.encode(pricePerDay, forKey: .pricePerDay)
         try container.encode(carType.rawValue, forKey: .carType)
+        try container.encode(imageData, forKey: .imageData)
+    }
+    
+    init(name: String, startDate: Date, endDate: Date, pricePerDay: Double, carType: CarType, imageData: Data? = nil) { 
+        self.name = name
+        self.startDate = startDate
+        self.endDate = endDate
+        self.pricePerDay = pricePerDay
+        self.carType = carType
+        self.imageData = imageData // Assign imageData
     }
 }
-
 
 class CarManager: ObservableObject {
     @Published var cars: [Car] = [] {
@@ -100,4 +110,3 @@ class CarManager: ObservableObject {
         cars.remove(at: index)
     }
 }
-

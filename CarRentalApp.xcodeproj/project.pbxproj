@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		180362132BC5F4ED0013DCDF /* MoneyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180362122BC5F4ED0013DCDF /* MoneyInfoView.swift */; };
+		180709732BC9B3CB00FA885F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180709722BC9B3CB00FA885F /* ImagePicker.swift */; };
 		184EC66A2BB6826000D2CB2C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184EC6692BB6826000D2CB2C /* HomeView.swift */; };
 		18E883F72BB4A96300BDC6EC /* CarRentalAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E883F62BB4A96300BDC6EC /* CarRentalAppApp.swift */; };
 		18E883FB2BB4A96600BDC6EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18E883FA2BB4A96600BDC6EC /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		180362122BC5F4ED0013DCDF /* MoneyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyInfoView.swift; sourceTree = "<group>"; };
+		180709722BC9B3CB00FA885F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		184EC6692BB6826000D2CB2C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		18E883F32BB4A96300BDC6EC /* CarRentalApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarRentalApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18E883F62BB4A96300BDC6EC /* CarRentalAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarRentalAppApp.swift; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 		184EC66E2BB7477600D2CB2C /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				180709722BC9B3CB00FA885F /* ImagePicker.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				18E8840A2BB4AB4200BDC6EC /* CarManager.swift in Sources */,
 				184EC66A2BB6826000D2CB2C /* HomeView.swift in Sources */,
 				18E8840E2BB4AB9B00BDC6EC /* CarDetailView.swift in Sources */,
+				180709732BC9B3CB00FA885F /* ImagePicker.swift in Sources */,
 				180362132BC5F4ED0013DCDF /* MoneyInfoView.swift in Sources */,
 				18E883F72BB4A96300BDC6EC /* CarRentalAppApp.swift in Sources */,
 			);

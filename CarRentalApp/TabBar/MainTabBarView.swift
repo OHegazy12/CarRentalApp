@@ -10,6 +10,7 @@ import SwiftUI
 struct MainTabBarView: View {
     @State private var selectedTab: Int = 0
     @StateObject var carManager = CarManager()
+    
     var body: some View {
         TabView {
             HomeView(carManager: carManager)
@@ -23,7 +24,6 @@ struct MainTabBarView: View {
                 .onAppear {
                     selectedTab = 0
                 }
-//            MoneyInfoView()
             PieView(carManager: carManager, carType: CarType.electric, car: nil)
                 .tabItem {
                     VStack {
