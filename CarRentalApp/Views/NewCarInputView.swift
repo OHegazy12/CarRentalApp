@@ -16,6 +16,7 @@ struct NewCarInputView: View {
     
     @State private var carName: String = ""
     @State private var rentalPrice: String = ""
+    @State private var extraNotes: String = ""
     @State private var startDate: Date = Date()
     @State private var endDate: Date = Date()
     @State private var selectedCarType: CarType = .electric
@@ -50,6 +51,12 @@ struct NewCarInputView: View {
                             Text(type.rawValue.capitalized)
                         }
                     }
+                }
+                
+                Section(header: Text("Extra Notes (Optional): ")) {
+                    TextField("", text: $extraNotes, prompt: Text("Add description ✍️")
+                        .fontWeight(.light)
+                        .foregroundColor(Color(uiColor: .lightGray)))
                 }
                 
                 Section(header: Text("Color")) {
@@ -115,8 +122,9 @@ struct NewCarInputView: View {
             carManager.cars[index].carType = selectedCarType
             carManager.cars[index].imageData = selectedImage?.jpegData(compressionQuality: 0.5)
             carManager.cars[index].color = selectedColorHex
+            carManager.cars[index].notes = extraNotes
         } else {
-            let newCar = Car(name: carName, startDate: startDate, endDate: endDate, pricePerDay: pricePerDay, carType: selectedCarType, imageData: selectedImage?.jpegData(compressionQuality: 0.5), color: selectedColorHex)
+            let newCar = Car(name: carName, startDate: startDate, endDate: endDate, pricePerDay: pricePerDay, carType: selectedCarType, imageData: selectedImage?.jpegData(compressionQuality: 0.5), color: selectedColorHex, notes: extraNotes)
             carManager.cars.append(newCar)
         }
         

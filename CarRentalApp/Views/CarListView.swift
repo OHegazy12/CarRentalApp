@@ -48,7 +48,7 @@ struct CarListView: View {
             )
             .sheet(isPresented: $isAddingNewCar) {
                 NewCarInputView(carManager: carManager, carToEdit: carToEdit) {
-                    isAddingNewCar = false // Dismiss the sheet after adding a new car
+                    isAddingNewCar = false
                 }
             }
         }
