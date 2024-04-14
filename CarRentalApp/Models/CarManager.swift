@@ -24,7 +24,7 @@ struct Car: Identifiable, Encodable, Decodable {
     var carType: CarType
     var imageData: Data?
     var color: String
-    var notes: String?
+    var notes: String
     
     var rentedDays: Int {
         let calendar = Calendar.current
@@ -53,7 +53,7 @@ struct Car: Identifiable, Encodable, Decodable {
         try container.encode(notes, forKey: .notes)
     }
     
-    init(name: String, startDate: Date, endDate: Date, pricePerDay: Double, carType: CarType, imageData: Data? = nil, color: String, notes: String?) {
+    init(name: String, startDate: Date, endDate: Date, pricePerDay: Double, carType: CarType, imageData: Data? = nil, color: String, notes: String) {
         self.name = name
         self.startDate = startDate
         self.endDate = endDate

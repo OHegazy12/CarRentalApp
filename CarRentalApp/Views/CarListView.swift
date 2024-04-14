@@ -20,12 +20,10 @@ struct CarListView: View {
                         HStack {
                             Text(car.name)
                             Spacer()
-                            let color = Color(hex: car.color) 
-                            if color != nil {
-                                RoundedRectangle(cornerRadius: 5)
-                                    .fill(color)
-                                    .frame(width: 30, height: 30)
-                            }
+                            let color = Color(hex: car.color)
+                            RoundedRectangle(cornerRadius: 5)
+                                .fill(color)
+                                .frame(width: 30, height: 30)
                         }
                     }
                     .contextMenu {

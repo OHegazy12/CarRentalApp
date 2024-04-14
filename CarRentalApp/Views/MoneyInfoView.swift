@@ -35,8 +35,6 @@ struct PieView: View {
             return .blue
         case .gas:
             return .orange
-        default:
-            return .purple
         }
     }
     

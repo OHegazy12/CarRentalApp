@@ -14,43 +14,50 @@ struct CarDetailView: View {
     @State private var carImage: UIImage?
     
     var body: some View {
-        VStack {
-            if let carImage = carImage {
-                Image(uiImage: carImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(maxWidth: .infinity)
-            }
+        ScrollView {
+            Spacer()
             
-            Text("Car Name: \(car.name)")
-            // Display other car details
-            Text("Car Type: \(car.carType.rawValue.capitalized)")
-            Text("Price Per Day: $\(formattedPrice)")
-            Text("Dates Rented: \(formattedStartDate) - \(formattedEndDate)")
-        }
-        .navigationTitle(car.name)
-        .navigationBarItems(trailing:
-            Button(action: {
+            VStack {
+                if let carImage = carImage {
+                    Image(uiImage: carImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: .infinity)
+                }
+            
+                Text("Car Type: \(car.carType.rawValue.capitalized)")
+                Text("Price Per Day: $\(formattedPrice)")
+                Text("Dates Rented: \(formattedStartDate) - \(formattedEndDate)")
+                if !car.notes.isEmpty {
+                    Text("Extra Notes: \(car.notes)")
+                }
+            }
+            .navigationTitle(car.name)
+            .navigationBarItems(trailing:
+                                    Button(action: {
                 isEditing = true
             }) {
                 Image(systemName: "pencil")
             }
-        )
-        .sheet(isPresented: $isEditing) {
-            NewCarInputView(carManager: carManager, carToEdit: car) {
-                isEditing = false
+            )
+            .sheet(isPresented: $isEditing) {
+                NewCarInputView(carManager: carManager, carToEdit: car) {
+                    isEditing = false
+                }
             }
-        }
-        .onReceive(carManager.objectWillChange) { _ in
-            // Update the car when changes are detected in the car manager
-            if let updatedCar = carManager.cars.first(where: { $0.id == car.id }) {
-                car = updatedCar
+            .onReceive(carManager.objectWillChange) { _ in
+                // Update the car when changes are detected in the car manager
+                if let updatedCar = carManager.cars.first(where: { $0.id == car.id }) {
+                    car = updatedCar
+                    loadCarImage()
+                }
+            }
+            .onAppear {
+                print("---> start: \(car.startDate) end: \(car.endDate)")
                 loadCarImage()
             }
-        }
-        .onAppear {
-            print("---> start: \(car.startDate) end: \(car.endDate)")
-            loadCarImage()
+            
+            Spacer()
         }
     }
     
