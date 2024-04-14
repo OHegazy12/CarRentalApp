@@ -11,13 +11,22 @@ struct CarListView: View {
     @ObservedObject var carManager: CarManager
     @State private var isAddingNewCar = false
     @State var carToEdit: Car?
-
+    
     var body: some View {
         NavigationView {
             List {
                 ForEach(carManager.cars) { car in
                     NavigationLink(destination: CarDetailView(carManager: carManager, car: car)) {
-                        Text(car.name)
+                        HStack {
+                            Text(car.name)
+                            Spacer()
+                            let color = Color(hex: car.color) 
+                            if color != nil {
+                                RoundedRectangle(cornerRadius: 5)
+                                    .fill(color)
+                                    .frame(width: 30, height: 30)
+                            }
+                        }
                     }
                     .contextMenu {
                         Button(action: {
@@ -47,7 +56,7 @@ struct CarListView: View {
             carManager.loadCars()
         }
     }
-
+    
     private func deleteCar(_ car: Car) {
         if let index = carManager.cars.firstIndex(where: { $0.id == car.id }) {
             carManager.deleteCar(at: index)

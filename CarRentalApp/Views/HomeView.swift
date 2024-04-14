@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Charts
 
 struct HomeView: View {
     @ObservedObject var carManager: CarManager
@@ -24,6 +23,9 @@ struct HomeView: View {
                     .padding()
                 AvailabilityOverview(daysTaken: carManager.totalRentedDays)
                     .padding()
+                if !carManager.cars.isEmpty {
+                    
+                }
             }
         }
         .navigationTitle("Home")

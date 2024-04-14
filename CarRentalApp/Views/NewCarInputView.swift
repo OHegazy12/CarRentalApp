@@ -21,6 +21,7 @@ struct NewCarInputView: View {
     @State private var selectedCarType: CarType = .electric
     @State private var selectedImage: UIImage?
     @State private var isShowingImagePicker = false
+    @State private var selectedColorHex: String = "#000000"
     
     init(carManager: CarManager, carToEdit: Car?, onAddCar: @escaping () -> Void) {
         self.carManager = carManager
@@ -49,6 +50,18 @@ struct NewCarInputView: View {
                             Text(type.rawValue.capitalized)
                         }
                     }
+                }
+                
+                Section(header: Text("Color")) {
+                    ColorPicker("Select Color", selection: Binding(
+                        get: {
+                            Color(hex: selectedColorHex)
+                        },
+                        set: { newColor in
+                            selectedColorHex = newColor.toHex()
+                        }
+                    ))
+                    .padding(.vertical)
                 }
                 
                 Section(header: Text("Select Rental Dates")) {
@@ -101,13 +114,40 @@ struct NewCarInputView: View {
             carManager.cars[index].pricePerDay = pricePerDay
             carManager.cars[index].carType = selectedCarType
             carManager.cars[index].imageData = selectedImage?.jpegData(compressionQuality: 0.5)
+            carManager.cars[index].color = selectedColorHex
         } else {
-            let newCar = Car(name: carName, startDate: startDate, endDate: endDate, pricePerDay: pricePerDay, carType: selectedCarType, imageData: selectedImage?.jpegData(compressionQuality: 0.5))
+            let newCar = Car(name: carName, startDate: startDate, endDate: endDate, pricePerDay: pricePerDay, carType: selectedCarType, imageData: selectedImage?.jpegData(compressionQuality: 0.5), color: selectedColorHex)
             carManager.cars.append(newCar)
         }
         
         carManager.saveCars()
         onAddCar()
         presentationMode.wrappedValue.dismiss()
+    }
+}
+
+extension Color {
+    init(hex: String) {
+        let scanner = Scanner(string: hex)
+        _ = scanner.scanString("#")
+        
+        var rgb: UInt64 = 0
+        scanner.scanHexInt64(&rgb)
+        
+        let red = Double((rgb & 0xFF0000) >> 16) / 255.0
+        let green = Double((rgb & 0x00FF00) >> 8) / 255.0
+        let blue = Double(rgb & 0x0000FF) / 255.0
+        
+        self.init(red: red, green: green, blue: blue)
+    }
+    
+    func toHex() -> String {
+        guard let components = UIColor(self).cgColor.components else { return "#000000" }
+        
+        let red = UInt8(components[0] * 255)
+        let green = UInt8(components[1] * 255)
+        let blue = UInt8(components[2] * 255)
+        
+        return String(format: "#%02X%02X%02X", red, green, blue)
     }
 }
