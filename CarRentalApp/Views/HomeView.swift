@@ -23,9 +23,6 @@ struct HomeView: View {
                     .padding()
                 AvailabilityOverview(daysTaken: carManager.totalRentedDays)
                     .padding()
-                if !carManager.cars.isEmpty {
-                    
-                }
             }
         }
         .navigationTitle("Home")

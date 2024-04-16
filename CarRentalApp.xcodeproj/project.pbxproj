@@ -10,6 +10,8 @@
 		180362132BC5F4ED0013DCDF /* MoneyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180362122BC5F4ED0013DCDF /* MoneyInfoView.swift */; };
 		180709732BC9B3CB00FA885F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180709722BC9B3CB00FA885F /* ImagePicker.swift */; };
 		184EC66A2BB6826000D2CB2C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184EC6692BB6826000D2CB2C /* HomeView.swift */; };
+		185F83D82BCC29250037CD0E /* HorizonCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 185F83D72BCC29250037CD0E /* HorizonCalendar */; };
+		185F83DA2BCC293F0037CD0E /* CalendarDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F83D92BCC293E0037CD0E /* CalendarDisplayViewController.swift */; };
 		18E883F72BB4A96300BDC6EC /* CarRentalAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E883F62BB4A96300BDC6EC /* CarRentalAppApp.swift */; };
 		18E883FB2BB4A96600BDC6EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18E883FA2BB4A96600BDC6EC /* Assets.xcassets */; };
 		18E883FE2BB4A96600BDC6EC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18E883FD2BB4A96600BDC6EC /* Preview Assets.xcassets */; };
@@ -18,13 +20,13 @@
 		18E8840C2BB4AB7600BDC6EC /* CarListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E8840B2BB4AB7600BDC6EC /* CarListView.swift */; };
 		18E8840E2BB4AB9B00BDC6EC /* CarDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E8840D2BB4AB9B00BDC6EC /* CarDetailView.swift */; };
 		18E884102BB4ABE000BDC6EC /* NewCarInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E8840F2BB4ABE000BDC6EC /* NewCarInputView.swift */; };
-		18E884122BB4ABED00BDC6EC /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E884112BB4ABED00BDC6EC /* CalendarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		180362122BC5F4ED0013DCDF /* MoneyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyInfoView.swift; sourceTree = "<group>"; };
 		180709722BC9B3CB00FA885F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		184EC6692BB6826000D2CB2C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		185F83D92BCC293E0037CD0E /* CalendarDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDisplayViewController.swift; sourceTree = "<group>"; };
 		18E883F32BB4A96300BDC6EC /* CarRentalApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarRentalApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18E883F62BB4A96300BDC6EC /* CarRentalAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarRentalAppApp.swift; sourceTree = "<group>"; };
 		18E883FA2BB4A96600BDC6EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -34,7 +36,6 @@
 		18E8840B2BB4AB7600BDC6EC /* CarListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListView.swift; sourceTree = "<group>"; };
 		18E8840D2BB4AB9B00BDC6EC /* CarDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetailView.swift; sourceTree = "<group>"; };
 		18E8840F2BB4ABE000BDC6EC /* NewCarInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCarInputView.swift; sourceTree = "<group>"; };
-		18E884112BB4ABED00BDC6EC /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185F83D82BCC29250037CD0E /* HorizonCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,9 +102,9 @@
 				18E8840B2BB4AB7600BDC6EC /* CarListView.swift */,
 				18E8840D2BB4AB9B00BDC6EC /* CarDetailView.swift */,
 				18E8840F2BB4ABE000BDC6EC /* NewCarInputView.swift */,
-				18E884112BB4ABED00BDC6EC /* CalendarView.swift */,
 				184EC6692BB6826000D2CB2C /* HomeView.swift */,
 				180362122BC5F4ED0013DCDF /* MoneyInfoView.swift */,
+				185F83D92BCC293E0037CD0E /* CalendarDisplayViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -140,6 +142,7 @@
 			);
 			name = CarRentalApp;
 			packageProductDependencies = (
+				185F83D72BCC29250037CD0E /* HorizonCalendar */,
 			);
 			productName = CarRentalApp;
 			productReference = 18E883F32BB4A96300BDC6EC /* CarRentalApp.app */;
@@ -170,6 +173,7 @@
 			);
 			mainGroup = 18E883EA2BB4A96300BDC6EC;
 			packageReferences = (
+				185F83D62BCC29250037CD0E /* XCRemoteSwiftPackageReference "HorizonCalendar" */,
 			);
 			productRefGroup = 18E883F42BB4A96300BDC6EC /* Products */;
 			projectDirPath = "";
@@ -198,7 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18E884082BB4A99D00BDC6EC /* MainTabBarView.swift in Sources */,
-				18E884122BB4ABED00BDC6EC /* CalendarView.swift in Sources */,
+				185F83DA2BCC293F0037CD0E /* CalendarDisplayViewController.swift in Sources */,
 				18E884102BB4ABE000BDC6EC /* NewCarInputView.swift in Sources */,
 				18E8840C2BB4AB7600BDC6EC /* CarListView.swift in Sources */,
 				18E8840A2BB4AB4200BDC6EC /* CarManager.swift in Sources */,
@@ -412,6 +416,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		185F83D62BCC29250037CD0E /* XCRemoteSwiftPackageReference "HorizonCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/HorizonCalendar.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		185F83D72BCC29250037CD0E /* HorizonCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 185F83D62BCC29250037CD0E /* XCRemoteSwiftPackageReference "HorizonCalendar" */;
+			productName = HorizonCalendar;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 18E883EB2BB4A96300BDC6EC /* Project object */;
 }

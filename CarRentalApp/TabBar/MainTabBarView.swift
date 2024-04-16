@@ -24,24 +24,38 @@ struct MainTabBarView: View {
                 .onAppear {
                     selectedTab = 0
                 }
+            CalendarViewWrapper()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "calendar")
+                            .environment(\.symbolVariants, selectedTab == 1 ? .fill : .none)
+                        Text("Calendar Overview")
+                    }
+                }
+                .onAppear {
+                    selectedTab = 1
+                }
             PieView(carManager: carManager, carType: CarType.electric, car: nil)
                 .tabItem {
                     VStack {
                         Image(systemName: "dollarsign.circle")
-                            .environment(\.symbolVariants, selectedTab == 1 ? .fill : .none)
+                            .environment(\.symbolVariants, selectedTab == 2 ? .fill : .none)
                         Text("Money Info")
                     }
+                }
+                .onAppear {
+                    selectedTab = 2
                 }
            CarListView(carManager: carManager)
                 .tabItem {
                     VStack {
                         Image(systemName: "list.bullet.clipboard")
-                            .environment(\.symbolVariants, selectedTab == 2 ? .fill : .none)
+                            .environment(\.symbolVariants, selectedTab == 3 ? .fill : .none)
                         Text("List")
                     }
                 }
                 .onAppear {
-                    selectedTab = 2
+                    selectedTab = 3
                 }
         }
     }

@@ -7,12 +7,6 @@
 
 import SwiftUI
 
-struct MoneyInfoView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
 struct CarActivityView: Identifiable {
     var carType: CarType
     var pricePerDay: Double
@@ -43,7 +37,6 @@ struct PieView: View {
             CarActivityView(carType: car.carType, pricePerDay: car.pricePerDay)
         }
         VStack {
-            
             Text("Money Breakdown")
                 .font(.title)
                 .fontWeight(.heavy)
