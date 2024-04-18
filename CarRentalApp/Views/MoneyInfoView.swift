@@ -33,15 +33,14 @@ struct PieView: View {
     }
     
     private var filteredCars: [Car] {
-        if selectedMonth == 0 { // All-time
-            return carManager.cars
-        } else {
-            let month = Calendar.current.date(byAdding: .month, value: -(selectedMonth - 1), to: Date())!
-            return carManager.cars.filter { car in
-                let components = Calendar.current.dateComponents([.year, .month], from: car.startDate)
-                let carMonth = Calendar.current.date(from: components)!
-                return Calendar.current.isDate(carMonth, equalTo: month, toGranularity: .month)
-            }
+        let month = Calendar.current.date(byAdding: .month, value: -selectedMonth, to: Date())!
+        let startOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: month))!
+        let endOfMonth = Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: startOfMonth)!
+        
+        return carManager.cars.filter { car in
+            let carStartDate = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: car.startDate))!
+            let carEndDate = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: car.endDate))!
+            return carStartDate >= startOfMonth && carEndDate <= endOfMonth
         }
     }
     
@@ -99,7 +98,7 @@ struct PieView: View {
                     }
                 }
                 .aspectRatio(contentMode: .fit)
-                VStack(alignment: .leading) {
+                VStack(alignment: .center) {
                     ForEach(data) { carData in
                         HStack {
                             Rectangle()
@@ -111,13 +110,24 @@ struct PieView: View {
                                 .font(.caption)
                         }
                     }
-                    Text("Total Price: $\(formattedTotalRevenue)")
+                    
+                    
+                    Text("Monthly Revenue for \(months[selectedMonth]): $\(String(format: "%.2f", monthlyRevenue))")
                         .font(.headline)
+                    
+                    
+                    Picker("Select Month", selection: $selectedMonth) {
+                        ForEach(0..<months.count) { index in
+                            Text(months[index]).tag(index)
+                        }
+                    }
+                    .pickerStyle(MenuPickerStyle())
+                    .frame(maxWidth: .infinity)
                 }
+                
                 Toggle("Display Donut Chart?", isOn: $displayDonutChart)
                     .padding()
             }
-            
         }
     }
 }
