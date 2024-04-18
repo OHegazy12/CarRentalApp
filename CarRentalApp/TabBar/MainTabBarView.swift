@@ -13,49 +13,38 @@ struct MainTabBarView: View {
     
     var body: some View {
         TabView {
-            HomeView(carManager: carManager)
+            CarRentalCollectionView(carManager: carManager)
                 .tabItem {
                     VStack {
-                        Image(systemName: "house")
+                        Image(systemName: "list.clipboard")
                             .environment(\.symbolVariants, selectedTab == 0 ? .fill : .none)
-                        Text("Home")
+                        Text("Bookings Overview")
                     }
                 }
                 .onAppear {
                     selectedTab = 0
                 }
-            CalendarViewWrapper()
+            PieView(carManager: carManager, carType: CarType.electric, car: nil)
                 .tabItem {
                     VStack {
-                        Image(systemName: "calendar")
+                        Image(systemName: "dollarsign.circle")
                             .environment(\.symbolVariants, selectedTab == 1 ? .fill : .none)
-                        Text("Calendar Overview")
+                        Text("Money Info")
                     }
                 }
                 .onAppear {
                     selectedTab = 1
                 }
-            PieView(carManager: carManager, carType: CarType.electric, car: nil)
-                .tabItem {
-                    VStack {
-                        Image(systemName: "dollarsign.circle")
-                            .environment(\.symbolVariants, selectedTab == 2 ? .fill : .none)
-                        Text("Money Info")
-                    }
-                }
-                .onAppear {
-                    selectedTab = 2
-                }
            CarListView(carManager: carManager)
                 .tabItem {
                     VStack {
                         Image(systemName: "list.bullet.clipboard")
-                            .environment(\.symbolVariants, selectedTab == 3 ? .fill : .none)
+                            .environment(\.symbolVariants, selectedTab == 2 ? .fill : .none)
                         Text("List")
                     }
                 }
                 .onAppear {
-                    selectedTab = 3
+                    selectedTab = 2
                 }
         }
     }
