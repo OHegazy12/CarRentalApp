@@ -24,7 +24,7 @@ struct PieView: View {
     @State private var selectedMonth: Int = 0
     
     private var months: [String] {
-        var dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM"
         return (0..<12).map { index in
             let date = Calendar.current.date(byAdding: .month, value: -index, to: Date())!
