@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CarRentalCollectionView: View {
     @ObservedObject var carManager: CarManager
+    @State private var navigateToDaysOverview = false
     
     var body: some View {
         NavigationView {
@@ -33,6 +34,14 @@ struct CarRentalCollectionView: View {
                 }
             }
             .navigationTitle("Bookings Overview")
+            .navigationBarItems(leading: Button(action: {
+                navigateToDaysOverview.toggle()
+            }, label: {
+                Image(systemName: "text.justify.left")
+            }))
+            .fullScreenCover(isPresented: $navigateToDaysOverview) {
+                DaysOverview(carManager: carManager)
+            }
         }
     }
     
@@ -53,6 +62,7 @@ struct CarRentalCollectionView: View {
         return ["\(periods.first!)-\(periods.last!)"]
     }
 }
+
 
 struct CarRentalCollectionView_Previews: PreviewProvider {
     static var previews: some View {
