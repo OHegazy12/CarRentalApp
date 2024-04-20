@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		180362122BC5F4ED0013DCDF /* MoneyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyInfoView.swift; sourceTree = "<group>"; };
 		180709722BC9B3CB00FA885F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		181E12262BD3756300091721 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		184EC6692BB6826000D2CB2C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		185F83D92BCC293E0037CD0E /* CalendarDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDisplayViewController.swift; sourceTree = "<group>"; };
 		18E883F32BB4A96300BDC6EC /* CarRentalApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarRentalApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +78,7 @@
 		18E883F52BB4A96300BDC6EC /* CarRentalApp */ = {
 			isa = PBXGroup;
 			children = (
+				181E12262BD3756300091721 /* Info.plist */,
 				184EC66E2BB7477600D2CB2C /* Other */,
 				18E884062BB4A98A00BDC6EC /* TabBar */,
 				18E884052BB4A97800BDC6EC /* Models */,
@@ -347,9 +349,9 @@
 				DEVELOPMENT_TEAM = CX2WD59759;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CarRentalApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -376,9 +378,9 @@
 				DEVELOPMENT_TEAM = CX2WD59759;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CarRentalApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

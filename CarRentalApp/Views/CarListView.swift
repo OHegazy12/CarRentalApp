@@ -17,14 +17,23 @@ struct CarListView: View {
             List {
                 ForEach(carManager.cars) { car in
                     NavigationLink(destination: CarDetailView(carManager: carManager, car: car)) {
-                        HStack {
-                            Text(car.name)
-                            Spacer()
-                            let color = Color(hex: car.color)
-                            RoundedRectangle(cornerRadius: 5)
-                                .fill(color)
-                                .frame(width: 30, height: 30)
+                        VStack(alignment: .leading) {
+                            if let imageData = car.imageData, let carImage = UIImage(data: imageData) {
+                                Image(uiImage: carImage)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 365, height: 300)
+                                    .cornerRadius(10)
+                            }
+                            HStack {
+                                Text(car.name)
+                                    .fontWeight(.heavy)
+                                Spacer()
+                                Text("\(String(format: "%.2f", car.pricePerDay)) / Day")
+                                    .fontWeight(.heavy)
+                            }
                         }
+                        
                     }
                     .contextMenu {
                         Button(action: {
@@ -59,5 +68,12 @@ struct CarListView: View {
         if let index = carManager.cars.firstIndex(where: { $0.id == car.id }) {
             carManager.deleteCar(at: index)
         }
+    }
+}
+
+struct CarListView_Preview: PreviewProvider {
+    static var previews: some View {
+        let carManager = CarManager()
+        return CarListView(carManager: carManager)
     }
 }

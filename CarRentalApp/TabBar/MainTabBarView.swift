@@ -16,9 +16,8 @@ struct MainTabBarView: View {
             CarRentalCollectionView(carManager: carManager)
                 .tabItem {
                     VStack {
-                        Image(systemName: "list.clipboard")
+                        Image(systemName: "house")
                             .environment(\.symbolVariants, selectedTab == 0 ? .fill : .none)
-                        Text("Bookings Overview")
                     }
                 }
                 .onAppear {
@@ -29,7 +28,6 @@ struct MainTabBarView: View {
                     VStack {
                         Image(systemName: "dollarsign.circle")
                             .environment(\.symbolVariants, selectedTab == 1 ? .fill : .none)
-                        Text("Money Info")
                     }
                 }
                 .onAppear {
@@ -38,9 +36,8 @@ struct MainTabBarView: View {
            CarListView(carManager: carManager)
                 .tabItem {
                     VStack {
-                        Image(systemName: "list.bullet.clipboard")
+                        Image(systemName: "car")
                             .environment(\.symbolVariants, selectedTab == 2 ? .fill : .none)
-                        Text("List")
                     }
                 }
                 .onAppear {
