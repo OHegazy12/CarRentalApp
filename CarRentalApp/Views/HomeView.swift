@@ -9,13 +9,13 @@ import SwiftUI
 
 struct DaysOverview: View {
     @ObservedObject var carManager: CarManager
-    @State private var navBackToCollectionView = false
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack {
-                    Text("Dates Overview")
+                VStack(alignment: .leading) {
+                    Text("Taken Days Overview")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                     
@@ -24,18 +24,15 @@ struct DaysOverview: View {
                 }
             }
             .navigationBarItems(leading: Button(action: {
-                navBackToCollectionView.toggle()
+                presentationMode.wrappedValue.dismiss()
             }, label: {
                 Image(systemName: "text.justify.left")
             }))
-            .fullScreenCover(isPresented: $navBackToCollectionView) {
-                CarRentalCollectionView(carManager: carManager)
-            }
         }
     }
     
     // Calculate total number of days taken for each month
-    private func calculateDaysTakenByMonth() -> [String: Int] {
+    private func calculateDaysTakenByMonth() -> [(String, Int)] {
         var daysTakenByMonth: [String: Set<Int>] = [:] // Using a set to ensure each day is counted only once
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM yyyy"
@@ -52,22 +49,27 @@ struct DaysOverview: View {
         }
         
         // Convert the set to a count for each month
-        var daysTakenCountByMonth: [String: Int] = [:]
-        for (month, days) in daysTakenByMonth {
-            daysTakenCountByMonth[month] = days.count
+        return daysTakenByMonth.map { (key, value) in
+            (key, value.count)
         }
-        
-        return daysTakenCountByMonth
+        .sorted(by: { (first, second) -> Bool in
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMMM yyyy"
+            if let firstDate = dateFormatter.date(from: first.0), let secondDate = dateFormatter.date(from: second.0) {
+                return firstDate < secondDate
+            }
+            return false
+        })
     }
 }
 
 struct AvailabilityOverview: View {
-    let daysTakenByMonth: [String: Int]
+    let daysTakenByMonth: [(String, Int)]
     
     var body: some View {
         VStack(alignment: .leading) {
-            ForEach(daysTakenByMonth.sorted(by: { $0.key < $1.key }), id: \.key) { month, daysTaken in
-                Text("\(month): \(daysTaken) days taken")
+            ForEach(daysTakenByMonth, id: \.0) { month, daysTaken in
+                Text("- \(month): \(daysTaken) / \(Date.daysInMonth(month: month))  days taken")
             }
         }
     }
@@ -88,8 +90,16 @@ extension Date {
         }
         return dates
     }
+    
+    static func daysInMonth(month: String) -> Int {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM yyyy"
+        if let date = dateFormatter.date(from: month) {
+            return Calendar.current.range(of: .day, in: .month, for: date)?.count ?? 0
+        }
+        return 0
+    }
 }
-
 
 #Preview {
     DaysOverview(carManager: CarManager())
