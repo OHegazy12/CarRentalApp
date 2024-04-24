@@ -27,6 +27,7 @@ struct CarDetailView: View {
             
                 Text("Car Type: \(car.carType.rawValue.capitalized)")
                 Text("Price Per Day: $\(formattedPrice)")
+                Text("Rented By: \(car.renterName)")
                 Text("Dates Rented: \(formattedStartDate) - \(formattedEndDate)")
                 if !car.notes.isEmpty {
                     Text("Extra Notes: \(car.notes)")

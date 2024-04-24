@@ -16,6 +16,7 @@ struct NewCarInputView: View {
     
     @State private var carName: String = ""
     @State private var rentalPrice: String = ""
+    @State private var nameOfOwner: String = ""
     @State private var extraNotes: String = ""
     @State private var startDate: Date = Date()
     @State private var endDate: Date = Date()
@@ -32,6 +33,7 @@ struct NewCarInputView: View {
         if let carToEdit = carToEdit {
             _carName = State(initialValue: carToEdit.name)
             _rentalPrice = State(initialValue: "\(carToEdit.pricePerDay)")
+            _nameOfOwner = State(initialValue: carToEdit.renterName)
             _startDate = State(initialValue: carToEdit.startDate)
             _endDate = State(initialValue: carToEdit.endDate)
             _selectedCarType = State(initialValue: carToEdit.carType)
@@ -51,6 +53,10 @@ struct NewCarInputView: View {
                             Text(type.rawValue.capitalized)
                         }
                     }
+                }
+                
+                Section(header: Text("Name Of Renter")) {
+                    TextField("Name of Renter", text: $nameOfOwner)
                 }
                 
                 Section(header: Text("Extra Notes (Optional): ")) {
@@ -123,8 +129,9 @@ struct NewCarInputView: View {
             carManager.cars[index].imageData = selectedImage?.jpegData(compressionQuality: 0.5)
             carManager.cars[index].color = selectedColorHex
             carManager.cars[index].notes = extraNotes
+            carManager.cars[index].renterName = nameOfOwner
         } else {
-            let newCar = Car(name: carName, startDate: startDate, endDate: endDate, pricePerDay: pricePerDay, carType: selectedCarType, imageData: selectedImage?.jpegData(compressionQuality: 0.5), color: selectedColorHex, notes: extraNotes)
+            let newCar = Car(name: carName, startDate: startDate, endDate: endDate, pricePerDay: pricePerDay, carType: selectedCarType, imageData: selectedImage?.jpegData(compressionQuality: 0.5), color: selectedColorHex, notes: extraNotes, renterName: nameOfOwner)
             carManager.cars.append(newCar)
         }
         
