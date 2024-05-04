@@ -69,7 +69,7 @@ struct AvailabilityOverview: View {
                 ForEach(daysTakenByMonth, id: \.0) { month, daysTaken in
                     VStack(alignment: .leading, spacing: 8) {
                         Text("\(month)")
-                        Text("\(daysTaken) / \(Date.daysInMonth(month: month))  days taken")
+                        Text("\(daysTaken) / \(Date.daysInMonth(month: month)) days taken")
                     }
                     .padding()
                     .cornerRadius(10)
