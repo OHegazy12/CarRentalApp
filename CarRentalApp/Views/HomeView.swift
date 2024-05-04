@@ -64,9 +64,16 @@ struct AvailabilityOverview: View {
     let daysTakenByMonth: [(String, Int)]
     
     var body: some View {
-        VStack(alignment: .leading) {
-            ForEach(daysTakenByMonth, id: \.0) { month, daysTaken in
-                Text("- \(month): \(daysTaken) / \(Date.daysInMonth(month: month))  days taken")
+        VStack {
+            LazyVGrid(columns: Array(repeating: GridItem(), count: 2), spacing: 10) {
+                ForEach(daysTakenByMonth, id: \.0) { month, daysTaken in
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("\(month)")
+                        Text("\(daysTaken) / \(Date.daysInMonth(month: month))  days taken")
+                    }
+                    .padding()
+                    .cornerRadius(10)
+                }
             }
         }
     }
