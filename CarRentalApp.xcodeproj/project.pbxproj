@@ -10,7 +10,6 @@
 		180362132BC5F4ED0013DCDF /* MoneyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180362122BC5F4ED0013DCDF /* MoneyInfoView.swift */; };
 		180709732BC9B3CB00FA885F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180709722BC9B3CB00FA885F /* ImagePicker.swift */; };
 		184EC66A2BB6826000D2CB2C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184EC6692BB6826000D2CB2C /* HomeView.swift */; };
-		185F83D82BCC29250037CD0E /* HorizonCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 185F83D72BCC29250037CD0E /* HorizonCalendar */; };
 		185F83DA2BCC293F0037CD0E /* CarRentalCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F83D92BCC293E0037CD0E /* CarRentalCollectionView.swift */; };
 		18E883F72BB4A96300BDC6EC /* CarRentalAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E883F62BB4A96300BDC6EC /* CarRentalAppApp.swift */; };
 		18E883FB2BB4A96600BDC6EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18E883FA2BB4A96600BDC6EC /* Assets.xcassets */; };
@@ -44,7 +43,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				185F83D82BCC29250037CD0E /* HorizonCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +142,6 @@
 			);
 			name = CarRentalApp;
 			packageProductDependencies = (
-				185F83D72BCC29250037CD0E /* HorizonCalendar */,
 			);
 			productName = CarRentalApp;
 			productReference = 18E883F32BB4A96300BDC6EC /* CarRentalApp.app */;
@@ -175,7 +172,6 @@
 			);
 			mainGroup = 18E883EA2BB4A96300BDC6EC;
 			packageReferences = (
-				185F83D62BCC29250037CD0E /* XCRemoteSwiftPackageReference "HorizonCalendar" */,
 			);
 			productRefGroup = 18E883F42BB4A96300BDC6EC /* Products */;
 			projectDirPath = "";
@@ -418,25 +414,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		185F83D62BCC29250037CD0E /* XCRemoteSwiftPackageReference "HorizonCalendar" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/HorizonCalendar.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		185F83D72BCC29250037CD0E /* HorizonCalendar */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 185F83D62BCC29250037CD0E /* XCRemoteSwiftPackageReference "HorizonCalendar" */;
-			productName = HorizonCalendar;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 18E883EB2BB4A96300BDC6EC /* Project object */;
 }

@@ -24,16 +24,16 @@ struct CarListView: View {
                                     .scaledToFill()
                                     .frame(width: 365, height: 300)
                                     .cornerRadius(10)
+                                    .clipped()
                             }
-                            HStack {
+                            HStack(spacing: 2) {
                                 Text(car.name)
                                     .fontWeight(.heavy)
                                 Spacer()
-                                Text("\(String(format: "%.2f", car.pricePerDay)) / Day")
+                                Text("$\(String(format: "%.2f", car.pricePerDay)) / Day")
                                     .fontWeight(.heavy)
                             }
                         }
-                        
                     }
                     .contextMenu {
                         Button(action: {
@@ -45,6 +45,7 @@ struct CarListView: View {
                     }
                 }
             }
+            
             .navigationTitle("Cars")
             .navigationBarItems(
                 trailing: Button(action: {

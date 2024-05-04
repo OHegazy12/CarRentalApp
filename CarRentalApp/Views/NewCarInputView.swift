@@ -25,6 +25,15 @@ struct NewCarInputView: View {
     @State private var isShowingImagePicker = false
     @State private var selectedColorHex: String = "#000000"
     
+    var totalCost: Double {
+        guard let pricePerDay = Double(rentalPrice), pricePerDay > 0 else {
+            return 0
+        }
+        
+        let numberOfDays = Calendar.current.dateComponents([.day], from: startDate, to: endDate).day ?? 0
+        return pricePerDay * Double(numberOfDays)
+    }
+    
     init(carManager: CarManager, carToEdit: Car?, onAddCar: @escaping () -> Void) {
         self.carManager = carManager
         self.carToEdit = carToEdit
@@ -47,6 +56,9 @@ struct NewCarInputView: View {
                     TextField("Car Name", text: $carName)
                     TextField("Rental Price Per Day", text: $rentalPrice)
                         .keyboardType(.numberPad)
+                        .onTapGesture {
+                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                        }
                     
                     Picker("Car Type", selection: $selectedCarType) {
                         ForEach(CarType.allCases, id: \.self) { type in
@@ -80,6 +92,12 @@ struct NewCarInputView: View {
                 Section(header: Text("Select Rental Dates")) {
                     DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
                     DatePicker("End Date", selection: $endDate, displayedComponents: .date)
+                }
+                
+                Section(header: Text("Total Cost of Rental")) {
+                    Text("$\(totalCost, specifier: "%.2f")")
+                        .foregroundColor(.blue)
+                        .font(.headline)
                 }
                 
                 Section(header: Text("Upload Image")) {

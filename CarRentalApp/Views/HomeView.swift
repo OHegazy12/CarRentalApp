@@ -15,14 +15,11 @@ struct DaysOverview: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading) {
-                    Text("Taken Days Overview")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                    
                     AvailabilityOverview(daysTakenByMonth: calculateDaysTakenByMonth())
                         .padding()
                 }
             }
+            .navigationTitle("Taken Days Overview")
             .navigationBarItems(leading: Button(action: {
                 presentationMode.wrappedValue.dismiss()
             }, label: {
