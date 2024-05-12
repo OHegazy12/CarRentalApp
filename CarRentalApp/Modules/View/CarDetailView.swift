@@ -43,7 +43,7 @@ struct CarDetailView: View {
                 Image(systemName: "pencil")
             }
         )
-        .sheet(isPresented: $isEditing) {
+        .fullScreenCover(isPresented: $isEditing) {
             NewCarInputView(carManager: carManager, carToEdit: car) {
                 isEditing = false
             }

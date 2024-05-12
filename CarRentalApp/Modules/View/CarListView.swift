@@ -22,7 +22,7 @@ struct CarListView: View {
                                 Image(uiImage: carImage)
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(width: 365, height: 300)
+                                    .frame(width: 330, height: 200)
                                     .cornerRadius(10)
                                     .clipped()
                             }
@@ -54,7 +54,7 @@ struct CarListView: View {
                     Image(systemName: "plus")
                 }
             )
-            .sheet(isPresented: $isAddingNewCar) {
+            .fullScreenCover(isPresented: $isAddingNewCar) {
                 NewCarInputView(carManager: carManager, carToEdit: carToEdit) {
                     isAddingNewCar = false
                 }

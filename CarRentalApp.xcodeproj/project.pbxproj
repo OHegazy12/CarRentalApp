@@ -49,6 +49,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		181638582BF0621E007F9726 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18E883F62BB4A96300BDC6EC /* CarRentalAppApp.swift */,
+				18E8840B2BB4AB7600BDC6EC /* CarListView.swift */,
+				18E8840D2BB4AB9B00BDC6EC /* CarDetailView.swift */,
+				18E8840F2BB4ABE000BDC6EC /* NewCarInputView.swift */,
+				184EC6692BB6826000D2CB2C /* HomeView.swift */,
+				180362122BC5F4ED0013DCDF /* MoneyInfoView.swift */,
+				185F83D92BCC293E0037CD0E /* CarRentalCollectionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		184EC66E2BB7477600D2CB2C /* Other */ = {
 			isa = PBXGroup;
 			children = (
@@ -80,7 +94,7 @@
 				184EC66E2BB7477600D2CB2C /* Other */,
 				18E884062BB4A98A00BDC6EC /* TabBar */,
 				18E884052BB4A97800BDC6EC /* Models */,
-				18E884042BB4A97400BDC6EC /* Views */,
+				18E884042BB4A97400BDC6EC /* Modules */,
 				18E883FA2BB4A96600BDC6EC /* Assets.xcassets */,
 				18E883FC2BB4A96600BDC6EC /* Preview Content */,
 			);
@@ -95,18 +109,12 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		18E884042BB4A97400BDC6EC /* Views */ = {
+		18E884042BB4A97400BDC6EC /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				18E883F62BB4A96300BDC6EC /* CarRentalAppApp.swift */,
-				18E8840B2BB4AB7600BDC6EC /* CarListView.swift */,
-				18E8840D2BB4AB9B00BDC6EC /* CarDetailView.swift */,
-				18E8840F2BB4ABE000BDC6EC /* NewCarInputView.swift */,
-				184EC6692BB6826000D2CB2C /* HomeView.swift */,
-				180362122BC5F4ED0013DCDF /* MoneyInfoView.swift */,
-				185F83D92BCC293E0037CD0E /* CarRentalCollectionView.swift */,
+				181638582BF0621E007F9726 /* View */,
 			);
-			path = Views;
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		18E884052BB4A97800BDC6EC /* Models */ = {
