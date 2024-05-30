@@ -33,7 +33,7 @@ struct MainTabBarView: View {
                 .onAppear {
                     selectedTab = 1
                 }
-           CarListView(carManager: carManager)
+            CarListView(carManager: carManager)
                 .tabItem {
                     VStack {
                         Image(systemName: "car")
